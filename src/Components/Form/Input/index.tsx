@@ -9,7 +9,7 @@ import { theme } from '../../../styles/theme';
 // TYPES
 import { IInput } from './types';
 
-export const Input = ({ iconName, value, ...rest }: IInput) => {
+export const Input = ({ value, ...rest }: IInput) => {
   const [isFocused, setisFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
@@ -18,7 +18,7 @@ export const Input = ({ iconName, value, ...rest }: IInput) => {
       <IconContainer isFocused={isFocused}>
         <Feather
           color={isFocused || isFilled ? theme.colors.main : theme.colors.text_detail}
-          name={iconName}
+          name="code"
           size={24}
         />
       </IconContainer>

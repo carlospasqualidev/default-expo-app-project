@@ -1,6 +1,6 @@
 // LIBS
-import { Formik } from 'formik';
 import React from 'react';
+import { Formik } from 'formik';
 import { Button } from 'react-native';
 
 import { Input } from '../../Components/Form/Input';
@@ -12,13 +12,9 @@ export const Home = () => (
       <Formik initialValues={{ email: '' }} onSubmit={(values) => console.log(values)}>
         {({ handleChange, handleSubmit, values }) => (
           <>
-            <Input
-              iconName="Father"
-              onChangeText={handleChange('email')}
-              value={values.email}
-            />
+            <Input onChangeText={handleChange('email')} value={values.email} />
 
-            <Button onPress={() => handleSubmit} title="Submit" />
+            <Button onPress={() => handleSubmit()} title="Submit" />
           </>
         )}
       </Formik>
