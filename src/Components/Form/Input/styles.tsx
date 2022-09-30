@@ -10,4 +10,5 @@ export const Container = styled(TextInput)`
   font-family: ${({ theme }) => theme.fonts.primary_400};
   padding: 16px 18px;
   margin-bottom: 8px;
+  width: 100%;
 `;
