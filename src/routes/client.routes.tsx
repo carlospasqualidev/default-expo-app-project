@@ -1,11 +1,10 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
-import { Home } from '../screens/Home';
+import { Login } from '../screens/Authentication/Login';
 
 const { Screen, Navigator } = createDrawerNavigator();
 
 export const ClientRoutes = () => (
   <Navigator>
-    <Screen name="Home" component={Home} />
+    <Screen name="Login" component={Login} />
   </Navigator>
 );
