@@ -12,7 +12,7 @@ import { Text } from '../../../components/Typography';
 import { Input } from '../../../components/Form/Input';
 
 export const Login = () => (
-  <LinearGradient colors={[`red`, 'blue']}>
+  <LinearGradient colors={['red', 'blue']}>
     <styles.Container>
       <Formik
         initialValues={{ email: '', name: '' }}
