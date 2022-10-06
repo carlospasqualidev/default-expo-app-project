@@ -15,13 +15,13 @@ export const TextType = ({
 
   switch (type) {
     case 'H1':
-      Element = <styles.H1 CSSProps={CSSProps}> {children}</styles.H1>;
+      Element = <styles.H1 CSSProps={CSSProps}>{children}</styles.H1>;
       break;
     case 'H2':
       Element = <styles.H2 CSSProps={CSSProps}>{children}</styles.H2>;
       break;
     case 'H3':
-      Element = <styles.H3 CSSProps={CSSProps}> {children}</styles.H3>;
+      Element = <styles.H3 CSSProps={CSSProps}>{children}</styles.H3>;
       break;
     case 'H4':
       Element = <styles.H4 CSSProps={CSSProps}>{children}</styles.H4>;
@@ -32,7 +32,6 @@ export const TextType = ({
     case 'H6':
       Element = <styles.H6 CSSProps={CSSProps}>{children}</styles.H6>;
       break;
-
     case 'P1':
       Element = <styles.P1 CSSProps={CSSProps}>{children}</styles.P1>;
       break;
@@ -47,9 +46,6 @@ export const TextType = ({
       break;
     case 'P5':
       Element = <styles.P5 CSSProps={CSSProps}>{children}</styles.P5>;
-      break;
-    case 'P6':
-      Element = <styles.P6 CSSProps={CSSProps}>{children}</styles.P6>;
       break;
 
     default:
