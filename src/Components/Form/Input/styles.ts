@@ -10,10 +10,9 @@ export const InputContainer = styled(TextInput)`
   color: ${theme.color.gray1};
   border-radius: 5px;
   font-size: ${RFValue(14)}px;
-  font-family: ${theme.font.primary_400};
   padding: 16px 18px;
   margin-bottom: 8px;
   width: 100%;
 
-  margin-top: ${theme.size.xxsm};
+  /* margin-top: ${theme.size.xxsm}; */
 `;

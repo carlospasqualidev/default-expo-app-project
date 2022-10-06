@@ -1,3 +1,5 @@
+import { RFValue } from 'react-native-responsive-fontsize';
+
 export const theme = {
   color: {
     primary: '#0C3966',
@@ -40,22 +42,15 @@ export const theme = {
     danger_5: '#FFCCCC',
   } as const,
 
-  font: {
-    primary_400: 'Inter_400Regular',
-    primary_500: 'Inter_500Medium',
-    primary_600: 'Inter_600SemiBold',
-    primary_700: 'Inter_700Bold',
-  } as const,
-
   size: {
-    xxsm: '0.25rem', // 4px
-    xsm: '0.5rem', // 8px
-    sm: '1rem', // 16px
-    md: '1.5rem', // 24px
-    lg: '2rem', // 32px
-    xlg: '2.5rem', // 40px
-    xxlg: '3rem', // 48px
-    xxxlg: '3.5rem', // 56px
-    xxxxlg: '4rem', // 64px
+    xxsm: `${RFValue(4)}px}`, // 4px
+    xsm: `${RFValue(8)}px}`, // 8px
+    sm: `${RFValue(16)}px}`, // 16px
+    md: `${RFValue(24)}px}`, // 24px
+    lg: `${RFValue(32)}px}`, // 32px
+    xlg: `${RFValue(40)}px}`, // 40px
+    xxlg: `${RFValue(48)}px}`, // 48px
+    xxxlg: `${RFValue(56)}px}`, // 56px
+    xxxxlg: `${RFValue(64)}px}`, // 64px
   } as const,
 };

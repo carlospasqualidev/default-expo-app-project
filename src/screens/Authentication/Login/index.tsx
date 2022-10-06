@@ -36,7 +36,9 @@ export const Login = () => (
         )}
       </Formik>
 
-      <Text type="H1">Text</Text>
+      <Text type="H1" CSSProps={{ backgroundColor: 'blue' }}>
+        Text
+      </Text>
       <Text type="H2">Text</Text>
       <Text type="H3">Text</Text>
       <Text type="H4">Text</Text>
