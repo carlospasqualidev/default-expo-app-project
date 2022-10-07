@@ -12,6 +12,8 @@ import { Text } from '../../../components/Typography';
 import { Input } from '../../../components/Form/Input';
 import { theme } from '../../../styles/theme';
 
+// APAGAR
+
 export const Login = () => (
   <LinearGradient
     CSSProps={{ flex: 1 }}
