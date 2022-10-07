@@ -2,47 +2,30 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const theme = {
   color: {
-    primary: '#0C3966',
-    primary_2: '#2966A3',
-    primary_3: '#6699CC',
-    primary_4: '#B8CCE0',
-    primary_5: '#DBE5F0',
+    primary: '#34B53A',
+    primaryM: '#74D779',
+    primaryL: '#C4EEC6',
 
-    secondary: '#765823',
-    secondary_2: '#AA7F32',
-    secondary_3: '#D1A961',
-    secondary_4: '#DCBE89',
-    secondary_5: '#F3E9D8',
+    danger: '#FF4E4E',
+    dangerM: '#FF6D4C',
+    dangerL: '#FFC0B3',
 
-    gray1: '#1F1F1F',
-    gray2: '##4D4D4D',
-    gray3: '#999999',
-    gray4: '#CCCCCC',
-    gray5: '#F2F2F2',
+    warningL: '#FFE8B3',
+    infoL: '#B3DFFF',
+
+    gray0: '#f5f5f5',
+    gray1: '#EDEDED',
+    gray2: '#E6E6E6',
+    gray3: '#D5D5D5',
+    gray4: '#999999',
+    gray5: '#2B2B2B',
 
     black: '#000000',
     white: '#FFFFFF',
-
-    success: '#247528',
-    success_2: '#38B53E',
-    success_3: '#63CF68',
-    success_4: '#8ADB8E',
-    success_5: '#D8F3D9',
-
-    warning: '#D6A001',
-    warning_2: '#FFC929',
-    warning_3: '#FFD866',
-    warning_4: '#FFE599',
-    warning_5: '#FFF2CC',
-
-    danger: '#CC0000',
-    danger_2: '#FF3333',
-    danger_3: '#FF6666',
-    danger_4: '#FF9999',
-    danger_5: '#FFCCCC',
   } as const,
 
   size: {
+    xxxsm: `${RFValue(2)}px}`, // 4px
     xxsm: `${RFValue(4)}px}`, // 4px
     xsm: `${RFValue(8)}px}`, // 8px
     sm: `${RFValue(16)}px}`, // 16px

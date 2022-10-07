@@ -10,9 +10,13 @@ import * as styles from './styles';
 import { LinearGradient } from '../../../components/LinearGradient';
 import { Text } from '../../../components/Typography';
 import { Input } from '../../../components/Form/Input';
+import { theme } from '../../../styles/theme';
 
 export const Login = () => (
-  <LinearGradient colors={['yellow', 'brown']}>
+  <LinearGradient
+    CSSProps={{ flex: 1 }}
+    colors={[theme.color.primaryL, theme.color.primaryM]}
+  >
     <styles.Container>
       <Formik
         initialValues={{ email: '', name: '' }}
@@ -24,6 +28,7 @@ export const Login = () => (
               label="E-mail"
               onChangeText={handleChange('email')}
               value={values.email}
+              error="Invalid Field"
             />
             <Input
               label="Senha"
