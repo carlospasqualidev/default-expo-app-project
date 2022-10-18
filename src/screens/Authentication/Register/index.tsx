@@ -14,10 +14,10 @@ import { theme } from '../../../styles/theme';
 
 import { schemaLogin } from './functions';
 
-export const Login = () => (
+export const Register = () => (
   <LinearGradient
     CSSProps={{ flex: 1 }}
-    colors={[theme.color.primaryL, theme.color.primaryM]}
+    colors={[theme.color.danger, theme.color.dangerL]}
   >
     <styles.Container>
       <Formik
@@ -45,7 +45,7 @@ export const Login = () => (
         )}
       </Formik>
 
-      <Text type="H1">Text</Text>
+      <Text type="H1">Tefsfsfsfsdxt</Text>
       <Text type="H2">Text</Text>
       <Text type="H3">Text</Text>
       <Text type="H4">Text</Text>
