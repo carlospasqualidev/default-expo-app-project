@@ -17,7 +17,7 @@ import { schemaLogin } from './functions';
 export const Login = () => (
   <LinearGradient
     CSSProps={{ flex: 1 }}
-    colors={[theme.color.primaryL, theme.color.primaryM]}
+    colors={[theme.color.primary, theme.color.primaryD]}
   >
     <styles.Container>
       <Formik

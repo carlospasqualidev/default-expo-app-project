@@ -2,16 +2,16 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const theme = {
   color: {
-    primary: '#34B53A',
-    primaryM: '#74D779',
-    primaryL: '#C4EEC6',
+    primary: '#26B024',
+    primaryM: '#1BAA1D',
+    primaryD: '#006800',
+
+    secondary: '#FFC02D',
+    secondaryM: '#CD9500',
 
     danger: '#FF4E4E',
     dangerM: '#FF6D4C',
     dangerL: '#FFC0B3',
-
-    warningL: '#FFE8B3',
-    infoL: '#B3DFFF',
 
     gray0: '#f5f5f5',
     gray1: '#EDEDED',
