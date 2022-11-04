@@ -1,26 +1,43 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // LIBS
 import React from 'react';
-import { theme } from '../../../styles/theme';
-import { Text } from '../../Typography';
-// import { useTheme } from 'styled-components';
-
-// STYLES
-import * as styles from './styles';
+import { TextInput } from 'react-native-paper';
+import { View } from 'react-native';
 
 // TYPES
 import { IInput } from './types';
 
-export const Input = ({ label, error, ...rest }: IInput) => (
-  <styles.Container>
-    {label && <Text type="H6">{label}</Text>}
-    <styles.InputContainer error={!!error} {...rest} />
+// COMPONENTS
+import { Text } from '../../Typography';
+
+// STYLES
+import { paperTheme } from '../../../styles/paperTheme';
+
+export const Input = ({ label, iconName, error, ...rest }: IInput) => (
+  <View>
+    {label && <Text type="p2">{label}</Text>}
+    {/* @ts-ignore-next-line */}
+    <TextInput
+      left={
+        error ? (
+          <TextInput.Icon
+            icon="information-outline"
+            iconColor={paperTheme.colors.error}
+          />
+        ) : (
+          !!iconName && (
+            <TextInput.Icon icon={iconName} iconColor={paperTheme.colors.primary} />
+          )
+        )
+      }
+      error={!!error}
+      {...rest}
+    />
 
     {error && (
-      <styles.ErrorContainer>
-        <Text type="P4" CSSProps={{ color: theme.color.danger }}>
-          {error}
-        </Text>
-      </styles.ErrorContainer>
+      <Text type="p3" style={{ color: paperTheme.colors.error }}>
+        {error}
+      </Text>
     )}
-  </styles.Container>
+  </View>
 );

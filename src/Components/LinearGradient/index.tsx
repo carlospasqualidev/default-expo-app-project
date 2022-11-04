@@ -4,13 +4,13 @@ import { ViewStyle } from 'react-native';
 export const LinearGradient = ({
   children,
   colors,
-  CSSProps,
+  style,
 }: {
   children: JSX.Element;
   colors: string[];
-  CSSProps: ViewStyle;
+  style: ViewStyle;
 }) => (
-  <ExpoLinearGradient colors={colors} style={CSSProps}>
+  <ExpoLinearGradient colors={colors} style={style}>
     {children}
   </ExpoLinearGradient>
 );

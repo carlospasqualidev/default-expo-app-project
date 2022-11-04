@@ -1,51 +1,93 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CSSProperties } from 'styled-components';
-import * as styles from './styles';
 
-export const TextType = ({
-  type,
-  children,
-  CSSProps,
-}: {
-  type: string;
-  children: string;
-  CSSProps?: CSSProperties;
-}) => {
+import { Text } from 'react-native-paper';
+import { IText } from './types';
+
+export const TextType = ({ type, children, style }: IText) => {
   let Element = null;
 
   switch (type) {
-    case 'H1':
-      Element = <styles.H1 CSSProps={CSSProps}>{children}</styles.H1>;
+    case 'h1':
+      Element = (
+        <Text variant="displayLarge" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'H2':
-      Element = <styles.H2 CSSProps={CSSProps}>{children}</styles.H2>;
+    case 'h2':
+      <Text variant="displayMedium" style={style}>
+        {children}
+      </Text>;
       break;
-    case 'H3':
-      Element = <styles.H3 CSSProps={CSSProps}>{children}</styles.H3>;
+    case 'h3':
+      Element = (
+        <Text variant="displaySmall" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'H4':
-      Element = <styles.H4 CSSProps={CSSProps}>{children}</styles.H4>;
+    case 'h4':
+      Element = (
+        <Text variant="headlineLarge" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'H5':
-      Element = <styles.H5 CSSProps={CSSProps}>{children}</styles.H5>;
+    case 'h5':
+      Element = (
+        <Text variant="headlineMedium" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'H6':
-      Element = <styles.H6 CSSProps={CSSProps}>{children}</styles.H6>;
+    case 'h6':
+      Element = (
+        <Text variant="headlineSmall" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'P1':
-      Element = <styles.P1 CSSProps={CSSProps}>{children}</styles.P1>;
+    case 'p1':
+      Element = (
+        <Text variant="titleLarge" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'P2':
-      Element = <styles.P2 CSSProps={CSSProps}>{children}</styles.P2>;
+    case 'p2':
+      Element = (
+        <Text variant="titleMedium" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'P3':
-      Element = <styles.P3 CSSProps={CSSProps}>{children}</styles.P3>;
+    case 'p3':
+      Element = (
+        <Text variant="titleSmall" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'P4':
-      Element = <styles.P4 CSSProps={CSSProps}>{children}</styles.P4>;
+    case 'p4':
+      Element = (
+        <Text variant="bodyLarge" style={style}>
+          {children}
+        </Text>
+      );
       break;
-    case 'P5':
-      Element = <styles.P5 CSSProps={CSSProps}>{children}</styles.P5>;
+    case 'p5':
+      Element = (
+        <Text variant="bodyMedium" style={style}>
+          {children}
+        </Text>
+      );
+      break;
+    case 'p6':
+      Element = (
+        <Text variant="bodySmall" style={style}>
+          {children}
+        </Text>
+      );
       break;
 
     default:

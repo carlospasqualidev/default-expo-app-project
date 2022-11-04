@@ -8,17 +8,14 @@ import * as styles from './styles';
 
 // COMPONENTS
 import { LinearGradient } from '../../../components/LinearGradient';
-import { Text } from '../../../components/Typography';
+// import { Text } from '../../../components/Typography';
 import { Input } from '../../../components/Form/Input';
 import { theme } from '../../../styles/theme';
 
 import { schemaLogin } from './functions';
 
 export const Register = () => (
-  <LinearGradient
-    CSSProps={{ flex: 1 }}
-    colors={[theme.color.danger, theme.color.dangerL]}
-  >
+  <LinearGradient style={{ flex: 1 }} colors={[theme.color.danger, theme.color.dangerL]}>
     <styles.Container>
       <Formik
         initialValues={{ email: '', name: '' }}
@@ -44,19 +41,6 @@ export const Register = () => (
           </>
         )}
       </Formik>
-
-      <Text type="H1">Tefsfsfsfsdxt</Text>
-      <Text type="H2">Text</Text>
-      <Text type="H3">Text</Text>
-      <Text type="H4">Text</Text>
-      <Text type="H5">Text</Text>
-      <Text type="H6">Text</Text>
-
-      <Text type="P1">Text</Text>
-      <Text type="P2">Text</Text>
-      <Text type="P3">Text</Text>
-      <Text type="P4">Text</Text>
-      <Text type="P5">Text</Text>
     </styles.Container>
   </LinearGradient>
 );

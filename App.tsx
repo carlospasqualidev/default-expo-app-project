@@ -1,14 +1,17 @@
-import { ThemeProvider } from 'styled-components';
-
+// LIBS
 import React from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
 
+// ROUTER
 import { Router } from './src/routes';
-import { theme } from './src/styles/theme';
+
+// THEME
+import { paperTheme } from './src/styles/paperTheme';
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <PaperProvider theme={paperTheme}>
       <Router />
-    </ThemeProvider>
+    </PaperProvider>
   );
 }

@@ -1,7 +1,7 @@
-import { CSSProperties } from 'styled-components';
+import { TextStyle } from 'react-native';
 
 export interface IText {
-  type: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'P1' | 'P2' | 'P3' | 'P4' | 'P5';
+  type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p1' | 'p2' | 'p3' | 'p4' | 'p5' | 'p6';
   children: string;
-  CSSProps?: CSSProperties;
+  style?: TextStyle;
 }

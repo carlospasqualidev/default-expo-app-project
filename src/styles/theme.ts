@@ -10,8 +10,8 @@ export const theme = {
     secondaryM: '#CD9500',
 
     danger: '#FF4E4E',
-    dangerM: '#FF6D4C',
     dangerL: '#FFC0B3',
+    dangerM: '#FF6D4C',
 
     gray0: '#f5f5f5',
     gray1: '#EDEDED',
