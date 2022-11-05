@@ -9,7 +9,7 @@ export const Button = ({
   buttonColor,
   textColor,
   loading,
-  width = 'fit-content',
+  width = '50%',
 }: IButton) => (
   <View style={{ width }}>
     <ButtonPaper

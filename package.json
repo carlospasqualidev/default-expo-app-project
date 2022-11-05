@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "pre-commit": "lint-staged"
   },
+  "android.config.googleMaps.apiKey": "AIzaSyB3nUmD4YpClZKfAZ5tj_7jxhquTYE2P94",
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
@@ -25,6 +26,7 @@
     "react-dom": "18.0.0",
     "react-native": "0.69.6",
     "react-native-gesture-handler": "~2.5.0",
+    "react-native-maps": "0.31.1",
     "react-native-paper": "5.0.0-rc.8",
     "react-native-reanimated": "~2.9.1",
     "react-native-responsive-fontsize": "^0.5.1",
