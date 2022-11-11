@@ -8,7 +8,6 @@ export async function requestUserLocationPermission() {
   if (status === 'granted') permissionStatus = true;
 
   return permissionStatus;
-
-  // const location = await Location.getCurrentPositionAsync({});
-  // setLocation(location);
 }
+
+export const getUserLocation = async () => Location.getCurrentPositionAsync();

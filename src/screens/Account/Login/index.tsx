@@ -3,15 +3,19 @@ import { Formik } from 'formik';
 
 // COMPONENTS
 import { Button, Input, LinearGradient } from '../../../components';
-import { theme } from '../../../styles/theme';
 import * as styles from './styles';
 
 import { schemaLogin } from './functions';
+import { color, opacity } from '../../../styles';
 
 export const Login = () => (
   <LinearGradient
     style={{ flex: 1 }}
-    colors={[theme.color.primary, theme.color.primaryD]}
+    colors={[
+      `${color['primary-300']}${opacity['50%']}`,
+      `${color['primary-300']}${opacity['25%']}`,
+      `${color['primary-300']}${opacity['0%']}`,
+    ]}
   >
     <styles.Container>
       <Formik

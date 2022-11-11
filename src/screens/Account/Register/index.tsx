@@ -10,12 +10,12 @@ import * as styles from './styles';
 import { LinearGradient } from '../../../components/LinearGradient';
 // import { Text } from '../../../components/Typography';
 import { Input } from '../../../components/Form/Input';
-import { theme } from '../../../styles/theme';
 
 import { schemaLogin } from './functions';
+import { color } from '../../../styles';
 
 export const Register = () => (
-  <LinearGradient style={{ flex: 1 }} colors={[theme.color.danger, theme.color.dangerL]}>
+  <LinearGradient style={{ flex: 1 }} colors={[color['error-200'], color['error-100']]}>
     <styles.Container>
       <Formik
         initialValues={{ email: '', name: '' }}

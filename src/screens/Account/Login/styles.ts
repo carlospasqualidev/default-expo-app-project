@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { theme } from '../../../styles/theme';
+import { size } from '../../../styles';
 
 export const Container = styled.View`
   flex: 1;
-  padding: ${theme.size.sm};
+  padding: ${size['sm-16']};
 `;

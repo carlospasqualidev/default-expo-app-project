@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Login, Map, Register } from '../screens';
 
@@ -13,8 +13,14 @@ export const ClientRoutes = () => (
       name="Map"
       component={Map}
       options={{
+        headerShown: false,
         tabBarLabel: 'Map',
-        tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+        tabBarIcon: ({ color, focused }) =>
+          focused ? (
+            <MaterialCommunityIcons name="map-search" size={24} color={color} />
+          ) : (
+            <MaterialCommunityIcons name="map-search-outline" size={24} color={color} />
+          ),
       }}
     />
 
@@ -22,8 +28,12 @@ export const ClientRoutes = () => (
       name="Login"
       component={Login}
       options={{
+        headerShown: false,
+
         tabBarLabel: 'Login',
-        tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="home" size={24} color={color} />
+        ),
       }}
     />
 
@@ -31,8 +41,12 @@ export const ClientRoutes = () => (
       name="Register"
       component={Register}
       options={{
+        headerShown: false,
+
         tabBarLabel: 'Register',
-        tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="home" size={24} color={color} />
+        ),
       }}
     />
   </Navigator>

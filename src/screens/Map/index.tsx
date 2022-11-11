@@ -8,7 +8,8 @@ import MapView, { Marker } from 'react-native-maps';
 import { LoadingScreen, Text } from '../../components';
 
 // FUNCTIONS
-import { requestUserLocationPermission } from './functions';
+import { getUserLocation, requestUserLocationPermission } from './functions';
+import { IUserRegion } from './types';
 
 // #endregion
 
@@ -32,22 +33,26 @@ const styles = StyleSheet.create({
 });
 // #endregion
 
-const initialRegion = {
-  latitude: -28.6783,
-  longitude: -49.3704,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421,
-};
-
 export const Map = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [userRegion, setUserRegion] = useState<IUserRegion>();
+
   const [locationAccessPermission, setLocationAccessPermission] =
     useState<boolean>(false);
 
   async function requestPermission() {
     const permissionStatus = await requestUserLocationPermission();
 
+    const region = await getUserLocation();
+
     setLocationAccessPermission(permissionStatus);
+    setUserRegion({
+      latitude: region.coords.latitude,
+      longitude: region.coords.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+
     setIsLoading(false);
   }
 
@@ -59,7 +64,13 @@ export const Map = () => {
     <LoadingScreen isLoading={isLoading}>
       <View style={styles.container}>
         {locationAccessPermission ? (
-          <MapView style={styles.map} initialRegion={initialRegion}>
+          <MapView
+            style={styles.map}
+            region={userRegion}
+            showsUserLocation
+            followsUserLocation
+            minZoomLevel={12}
+          >
             <Marker
               coordinate={{
                 latitude: -28.6783,
