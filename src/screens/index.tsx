@@ -1,3 +1,2 @@
-export * from './Account/Login';
-export * from './Account/Register';
+export * from './Account/Details';
 export * from './Map';

@@ -5,6 +5,8 @@ import { StyleSheet, View } from 'react-native';
 
 // TYPES
 import { ILoadingScreen } from './types';
+import { Text } from '../Typography';
+import { sizes } from '../../styles';
 
 // #endregion
 
@@ -15,12 +17,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  text: {
+    marginBottom: sizes['sm-8'],
+  },
 });
 // #endregion
 
 export const LoadingScreen = ({ isLoading, children }: ILoadingScreen) =>
   isLoading ? (
     <View style={styles.container}>
+      <Text type="h6" style={styles.text}>
+        Veglivery💚
+      </Text>
+
       <ActivityIndicator animating />
     </View>
   ) : (

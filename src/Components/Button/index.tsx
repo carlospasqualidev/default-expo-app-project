@@ -9,7 +9,7 @@ export const Button = ({
   buttonColor,
   textColor,
   loading,
-  width = '50%',
+  width = '75%',
 }: IButton) => (
   <View style={{ width }}>
     <ButtonPaper
