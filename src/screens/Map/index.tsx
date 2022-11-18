@@ -2,10 +2,11 @@
 // LIBS
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 
 // COMPONENTS
 import { LoadingScreen, Text } from '../../components';
+import { PlacePopover } from '../../components/PlacePopover';
 
 // FUNCTIONS
 import { getUserLocation, requestUserLocationPermission } from './functions';
@@ -72,7 +73,12 @@ export const Map = () => {
               pinColor="green"
               title="Teste"
               description="decrição"
-            />
+              style={{}}
+            >
+              <Callout tooltip>
+                <PlacePopover />
+              </Callout>
+            </Marker>
           </MapView>
         ) : (
           <Text type="h4">Permissão negada</Text>
