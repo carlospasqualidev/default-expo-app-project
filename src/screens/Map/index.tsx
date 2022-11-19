@@ -2,15 +2,17 @@
 // LIBS
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import MapView, { Callout, Marker } from 'react-native-maps';
+import MapView, { Marker as MapMarker } from 'react-native-maps';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 // COMPONENTS
 import { LoadingScreen, Text } from '../../components';
-import { PlacePopover } from '../../components/PlacePopover';
+import { ModalDetails } from './Modals/Details';
 
 // FUNCTIONS
 import { getUserLocation, requestUserLocationPermission } from './functions';
 import { IUserRegion } from './types';
+import { useTheme } from '../../hooks';
 
 // #endregion
 
@@ -31,6 +33,9 @@ const styles = StyleSheet.create({
 export const Map = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userRegion, setUserRegion] = useState<IUserRegion>();
+  const theme = useTheme();
+
+  const [popover, setpopover] = useState<boolean>(false);
 
   const [locationAccessPermission, setLocationAccessPermission] =
     useState<boolean>(false);
@@ -58,28 +63,30 @@ export const Map = () => {
     <LoadingScreen isLoading={isLoading}>
       <View>
         {locationAccessPermission ? (
-          <MapView
-            style={styles.map}
-            region={userRegion}
-            showsUserLocation
-            followsUserLocation
-            minZoomLevel={12}
-          >
-            <Marker
-              coordinate={{
-                latitude: -28.6783,
-                longitude: -49.3704,
-              }}
-              pinColor="green"
-              title="Teste"
-              description="decrição"
-              style={{}}
+          <>
+            <MapView
+              style={styles.map}
+              region={userRegion}
+              showsUserLocation
+              followsUserLocation
+              minZoomLevel={12}
             >
-              <Callout tooltip>
-                <PlacePopover />
-              </Callout>
-            </Marker>
-          </MapView>
+              <MapMarker
+                coordinate={{
+                  latitude: -28.6583,
+                  longitude: -49.3704,
+                }}
+                onPress={() => setpopover((state) => !state)}
+              >
+                <MaterialCommunityIcons
+                  name="map-marker"
+                  size={48}
+                  color={theme.colors.primary}
+                />
+              </MapMarker>
+            </MapView>
+            <ModalDetails isOpen={popover} hideModal={() => setpopover(false)} />
+          </>
         ) : (
           <Text type="h4">Permissão negada</Text>
         )}
