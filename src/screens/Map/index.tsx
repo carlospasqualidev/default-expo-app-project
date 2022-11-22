@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 // #region IMPORTS
 // LIBS
 import { useEffect, useState } from 'react';
@@ -11,8 +12,10 @@ import { ModalDetails } from './Modals/Details';
 
 // FUNCTIONS
 import { getUserLocation, requestUserLocationPermission } from './functions';
-import { IUserRegion } from './types';
+import { IPlaces, IUserRegion } from './types';
 import { useTheme } from '../../hooks';
+
+import { fakePlaces } from './fakeData';
 
 // #endregion
 
@@ -28,17 +31,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#red',
   },
 });
+
 // #endregion
 
 export const Map = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [userRegion, setUserRegion] = useState<IUserRegion>();
   const theme = useTheme();
 
-  const [popover, setpopover] = useState<boolean>(false);
-
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [userRegion, setUserRegion] = useState<IUserRegion>();
   const [locationAccessPermission, setLocationAccessPermission] =
     useState<boolean>(false);
+
+  const [popover, setpopover] = useState<boolean>(false);
+  const [clickedPlace, setClickedPlace] = useState<IPlaces | null>(null);
 
   async function requestPermission() {
     const permissionStatus = await requestUserLocationPermission();
@@ -71,21 +76,34 @@ export const Map = () => {
               followsUserLocation
               minZoomLevel={12}
             >
-              <MapMarker
-                coordinate={{
-                  latitude: -28.6583,
-                  longitude: -49.3704,
-                }}
-                onPress={() => setpopover((state) => !state)}
-              >
-                <MaterialCommunityIcons
-                  name="map-marker"
-                  size={48}
-                  color={theme.colors.primary}
-                />
-              </MapMarker>
+              {fakePlaces.map((place) => (
+                <MapMarker
+                  key={place.latitude}
+                  coordinate={{
+                    latitude: place.latitude,
+                    longitude: place.longitude,
+                  }}
+                  onPress={() => {
+                    setClickedPlace(place);
+                    setpopover((state) => !state);
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="map-marker"
+                    size={48}
+                    color={theme.colors.primary}
+                  />
+                </MapMarker>
+              ))}
             </MapView>
-            <ModalDetails isOpen={popover} hideModal={() => setpopover(false)} />
+
+            {popover && (
+              <ModalDetails
+                isOpen={popover}
+                hideModal={() => setpopover(false)}
+                placeData={clickedPlace!}
+              />
+            )}
           </>
         ) : (
           <Text type="h4">Permissão negada</Text>

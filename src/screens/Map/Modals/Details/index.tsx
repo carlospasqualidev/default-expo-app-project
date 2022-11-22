@@ -1,15 +1,10 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ScrollView, SafeAreaView } from 'react-native';
 import { Modal, Stars, IconButton, Text } from '../../../../components';
 import { sizes } from '../../../../styles';
 import { useTheme } from '../../../../hooks';
+import { IPlaceDetailsModal } from '../../types';
 
-export const ModalDetails = ({
-  hideModal,
-  isOpen,
-}: {
-  isOpen: boolean;
-  hideModal: () => void;
-}) => {
+export const ModalDetails = ({ hideModal, isOpen, placeData }: IPlaceDetailsModal) => {
   const theme = useTheme();
 
   // #region STYLES
@@ -58,44 +53,43 @@ export const ModalDetails = ({
         hideModal();
       }}
     >
-      <>
-        <Image
-          style={styles.image}
-          source={{
-            uri: 'https://static.significados.com.br/foto/verduras-e-legumes-0.jpg',
-          }}
-        />
-        <View style={styles.body}>
-          <Text type="h5">Mamma veg</Text>
+      <SafeAreaView>
+        <ScrollView>
+          <Image
+            style={styles.image}
+            source={{
+              uri: placeData.image,
+            }}
+          />
+          <View style={styles.body}>
+            <Text type="h5">{placeData.name}</Text>
 
-          <View style={styles.stars}>
-            <Stars filled={3} maxCount={5} />
+            <View style={styles.stars}>
+              <Stars filled={placeData.stars} maxCount={5} />
+            </View>
+
+            <View style={styles.buttonsContainer}>
+              <IconButton
+                icon="comment-arrow-right-outline"
+                label="Como chegar"
+                onPress={() => console.log('click')}
+              />
+              <IconButton
+                icon="heart-outline"
+                label="favoritar"
+                onPress={() => console.log('click')}
+              />
+              <IconButton
+                icon="car-outline"
+                label="Chamar carro"
+                onPress={() => console.log('click')}
+              />
+            </View>
+
+            <Text type="p2">{placeData.description}</Text>
           </View>
-
-          <View style={styles.buttonsContainer}>
-            <IconButton
-              icon="comment-arrow-right-outline"
-              label="Como chegar"
-              onPress={() => console.log('click')}
-            />
-            <IconButton
-              icon="heart-outline"
-              label="favoritar"
-              onPress={() => console.log('click')}
-            />
-            <IconButton
-              icon="car-outline"
-              label="Chamar carro"
-              onPress={() => console.log('click')}
-            />
-          </View>
-
-          <Text type="p2">
-            It is a long established fact that a reader will be distracted by the readable
-            content of a page when looking at its layout.
-          </Text>
-        </View>
-      </>
+        </ScrollView>
+      </SafeAreaView>
     </Modal>
   );
 };
