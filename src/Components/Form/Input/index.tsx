@@ -9,7 +9,7 @@ import { IInput } from './types';
 
 // COMPONENTS
 import { Text } from '../../Typography';
-import { useTheme } from '../../../styles';
+import { sizes, useTheme } from '../../../styles';
 
 // STYLES
 
@@ -17,8 +17,12 @@ export const Input = ({ label, iconName, error, ...rest }: IInput) => {
   const theme = useTheme();
 
   return (
-    <View>
-      {label && <Text type="p2">{label}</Text>}
+    <View style={{ marginBottom: sizes['sm-16'] }}>
+      {label && (
+        <Text type="p2" style={{ marginBottom: sizes['sm-8'] }}>
+          {label}
+        </Text>
+      )}
       {/* @ts-ignore-next-line */}
       <TextInput
         left={

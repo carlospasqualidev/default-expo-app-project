@@ -7,7 +7,7 @@ import { Text, Input, Button } from '../../../components';
 import { sizes, useTheme } from '../../../styles';
 import { schemaLogin } from './functions';
 
-export const AccountDetails = () => {
+export const Login = ({ setLoggedUser }: { setLoggedUser: () => any }) => {
   const theme = useTheme();
 
   // #region STYLES
@@ -65,7 +65,7 @@ export const AccountDetails = () => {
       <Formik
         initialValues={{ email: '', name: '' }}
         validationSchema={schemaLogin}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => setLoggedUser(true)}
       >
         {({ handleChange, handleSubmit, values, errors }) => (
           <>
