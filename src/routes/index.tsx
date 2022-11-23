@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unstable-nested-components */
 // #region IMPORTS
 // LIBS
@@ -9,11 +10,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sizes, useTheme } from '../styles';
 import { MapRouter } from './map.routes';
 import { AccountRouter } from './account.routes';
 import { Login } from '../screens/Account/Login';
+import { getItemStorage } from '../hooks/setItemStorage';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 const { Screen: StackScreen, Navigator: StackNavigator } = createNativeStackNavigator();
@@ -22,7 +24,7 @@ const { Screen: StackScreen, Navigator: StackNavigator } = createNativeStackNavi
 
 export const Router = () => {
   const theme = useTheme();
-  const [userLogged, setUserLogged] = useState(false);
+  const [userLogged, setUserLogged] = useState<any>(null);
 
   // #region STYLES
   const styles = StyleSheet.create({
@@ -39,6 +41,17 @@ export const Router = () => {
       height: 60,
     },
   });
+
+  useEffect(() => {
+    const getUser = async () => {
+      const User = await getItemStorage({ key: '@User' });
+
+      if (User) setUserLogged(User);
+    };
+
+    getUser();
+  }, []);
+
   return (
     <NavigationContainer>
       <StatusBar barStyle="default" />
@@ -46,6 +59,7 @@ export const Router = () => {
       {userLogged ? (
         <Navigator
           screenOptions={{
+            tabBarHideOnKeyboard: true,
             tabBarShowLabel: false,
             tabBarStyle: {
               ...styles.tabBar,
@@ -57,6 +71,7 @@ export const Router = () => {
             component={MapRouter}
             options={{
               headerShown: false,
+
               tabBarIcon: ({ focused }) =>
                 focused ? (
                   <MaterialCommunityIcons
@@ -98,7 +113,13 @@ export const Router = () => {
         </Navigator>
       ) : (
         <StackNavigator>
-          <StackScreen name="Login" component={() => <Login />} />
+          <StackScreen
+            name="Login"
+            options={{
+              headerShown: false,
+            }}
+            component={Login}
+          />
         </StackNavigator>
       )}
     </NavigationContainer>

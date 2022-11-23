@@ -17,7 +17,7 @@ export const Button = ({
       buttonColor={buttonColor}
       mode={mode}
       loading={loading}
-      onPress={() => onPress}
+      onPress={() => onPress()}
     >
       {label}
     </ButtonPaper>

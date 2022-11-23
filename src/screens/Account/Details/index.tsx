@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 // LIBS
 import { View, StyleSheet, Image } from 'react-native';
 import { Formik } from 'formik';
 
 // COMPONENTS
-import { Text, Input, Button } from '../../../components';
+import { Text, Input, Button, IconButton } from '../../../components';
 import { sizes, useTheme } from '../../../styles';
 import { schemaLogin } from './functions';
 
@@ -42,7 +43,7 @@ export const AccountDetails = () => {
   return (
     <View style={styles.background}>
       <Text type="h6" style={styles.header}>
-        Editar Dados
+        Perfil
       </Text>
 
       <View style={styles.imageContainer}>
@@ -63,18 +64,24 @@ export const AccountDetails = () => {
       </View>
 
       <Formik
-        initialValues={{ email: '', name: '' }}
+        initialValues={{
+          email: 'carlos.pasquali.dev@gmail.com',
+          name: 'Carlos Pasquali',
+          password: '*******',
+        }}
         validationSchema={schemaLogin}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={async (values) => {
+          console.log(values);
+        }}
       >
         {({ handleChange, handleSubmit, values, errors }) => (
           <>
             <Input
               label="Nome"
               iconName="account-outline"
-              onChangeText={handleChange('email')}
-              value={values.email}
-              error={errors.email}
+              onChangeText={handleChange('name')}
+              value={values.name}
+              error={errors.name}
             />
             <Input
               label="E-mail"
@@ -86,12 +93,18 @@ export const AccountDetails = () => {
             <Input
               label="Senha"
               iconName="alphabetical"
-              onChangeText={handleChange('name')}
-              value={values.name}
-              error={errors.name}
+              onChangeText={handleChange('password')}
+              value={values.password}
+              error={errors.password}
             />
             <View style={styles.buttonContainer}>
-              <Button label="Salvar" onPress={() => handleSubmit()} />
+              <Button label="Salvar" onPress={handleSubmit} />
+              <IconButton label="Sair" onPress={() => console.log('sair')} icon="exit" />
+              <IconButton
+                label="Sair"
+                onPress={() => console.log('sair')}
+                icon="pencil"
+              />
             </View>
           </>
         )}

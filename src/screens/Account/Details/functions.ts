@@ -8,6 +8,8 @@ export const schemaLogin = yup
       .email('Informe um e-mail válido.')
       .required('E-mail obrigatório.'),
 
+    name: yup.string().required('Nome obrigatório.'),
+
     password: yup
       .string()
       .required('Informe a senha.')

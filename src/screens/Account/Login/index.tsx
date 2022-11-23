@@ -1,23 +1,29 @@
+/* eslint-disable no-console */
 // LIBS
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 
 // COMPONENTS
 import { Text, Input, Button } from '../../../components';
 import { sizes, useTheme } from '../../../styles';
 import { schemaLogin } from './functions';
+import { setItemStorage } from '../../../hooks/setItemStorage';
 
-export const Login = ({ setLoggedUser }: { setLoggedUser: () => any }) => {
+export const Login = () => {
   const theme = useTheme();
 
   // #region STYLES
   const styles = StyleSheet.create({
     background: {
       flex: 1,
+      justifyContent: 'center',
       backgroundColor: theme.colors.background,
       padding: sizes['sm-16'],
     },
+
     header: {
+      alignItems: 'center',
+      justifyContent: 'center',
       marginBottom: sizes['sm-16'],
     },
     imageContainer: {
@@ -33,7 +39,6 @@ export const Login = ({ setLoggedUser }: { setLoggedUser: () => any }) => {
     },
 
     buttonContainer: {
-      flex: 1,
       alignItems: 'center',
     },
   });
@@ -41,61 +46,53 @@ export const Login = ({ setLoggedUser }: { setLoggedUser: () => any }) => {
 
   return (
     <View style={styles.background}>
-      <Text type="h6" style={styles.header}>
-        Editar Dados
-      </Text>
-
-      <View style={styles.imageContainer}>
-        <View>
-          <Text type="p2" style={{ marginBottom: sizes['sm-4'] }}>
-            Foto
-          </Text>
-          <Image
-            style={styles.image}
-            source={{
-              uri: 'https://images.adsttc.com/media/images/5ab9/3634/f197/cc6e/5400/00b7/slideshow/0376.jpg?1522087455',
-            }}
-          />
+      <View>
+        <View style={styles.header}>
+          <Text type="h3">Veglivery💚</Text>
         </View>
-        <Text type="p2" style={{ marginBottom: sizes['sm-4'] }}>
-          tamanho maximo de 5 MB.
-        </Text>
-      </View>
 
-      <Formik
-        initialValues={{ email: '', name: '' }}
-        validationSchema={schemaLogin}
-        onSubmit={(values) => setLoggedUser(true)}
-      >
-        {({ handleChange, handleSubmit, values, errors }) => (
-          <>
-            <Input
-              label="Nome"
-              iconName="account-outline"
-              onChangeText={handleChange('email')}
-              value={values.email}
-              error={errors.email}
-            />
-            <Input
-              label="E-mail"
-              iconName="email-outline"
-              onChangeText={handleChange('email')}
-              value={values.email}
-              error={errors.email}
-            />
-            <Input
-              label="Senha"
-              iconName="alphabetical"
-              onChangeText={handleChange('name')}
-              value={values.name}
-              error={errors.name}
-            />
-            <View style={styles.buttonContainer}>
-              <Button label="Salvar" onPress={() => handleSubmit()} />
-            </View>
-          </>
-        )}
-      </Formik>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={schemaLogin}
+          onSubmit={(values) => {
+            if (
+              values.password === '123123123' &&
+              values.email === 'carlos.pasquali.dev@gmail.com'
+            ) {
+              const data = {
+                name: 'Carlos Pasquali',
+                email: values.email,
+                password: values.password,
+              };
+              setItemStorage({ key: '@User', data });
+            } else {
+              console.log('Erro na autenticacao');
+            }
+          }}
+        >
+          {({ handleChange, handleSubmit, values, errors }) => (
+            <>
+              <Input
+                label="E-mail"
+                iconName="email-outline"
+                onChangeText={handleChange('email')}
+                value={values.email}
+                error={errors.email}
+              />
+              <Input
+                label="Senha"
+                iconName="alphabetical"
+                onChangeText={handleChange('password')}
+                value={values.password}
+                error={errors.password}
+              />
+              <View style={styles.buttonContainer}>
+                <Button label="Entrar" onPress={handleSubmit} />
+              </View>
+            </>
+          )}
+        </Formik>
+      </View>
     </View>
   );
 };
