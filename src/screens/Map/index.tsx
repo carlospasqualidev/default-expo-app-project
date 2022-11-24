@@ -16,9 +16,12 @@ import { IPlaces, IUserRegion } from './types';
 import { useTheme } from '../../hooks';
 
 import { fakePlaces } from './fakeData';
+import { sizes } from '../../styles';
 
 // #endregion
+// #region STYLES
 
+// #endregion
 // #region STYLES
 const styles = StyleSheet.create({
   map: {
@@ -29,6 +32,16 @@ const styles = StyleSheet.create({
   markerView: {
     flex: 1,
     backgroundColor: '#red',
+  },
+
+  containerPermission: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  text: {
+    marginBottom: sizes['sm-8'],
   },
 });
 
@@ -67,7 +80,7 @@ export const Map = () => {
   return (
     <LoadingScreen isLoading={isLoading}>
       <View>
-        {locationAccessPermission ? (
+        {locationAccessPermission === true ? (
           <>
             <MapView
               style={styles.map}
@@ -106,7 +119,18 @@ export const Map = () => {
             )}
           </>
         ) : (
-          <Text type="h4">Permissão negada</Text>
+          <>
+            <View style={styles.containerPermission}>
+              <Text type="h6" style={styles.text}>
+                Veglivery💚
+              </Text>
+              <Text type="p3" style={styles.text}>
+                Nós realmente precisamos da sua localização :( ...
+              </Text>
+            </View>
+
+            {requestPermission()}
+          </>
         )}
       </View>
     </LoadingScreen>

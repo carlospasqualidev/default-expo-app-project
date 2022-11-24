@@ -8,10 +8,12 @@ export const IconButton = ({
   onPress,
   icon,
   label,
+  containerColor,
 }: {
   onPress: () => void;
   icon: string;
   label?: string;
+  containerColor?: string;
 }) => {
   const theme = useTheme();
 
@@ -28,7 +30,7 @@ export const IconButton = ({
         icon={icon}
         iconColor="white"
         onPress={onPress}
-        containerColor={theme.colors.primary}
+        containerColor={containerColor ?? theme.colors.primary}
       />
 
       <Text type="p6">{label}</Text>

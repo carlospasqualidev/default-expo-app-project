@@ -9,7 +9,13 @@ export const setItemStorage = async ({ key, data }: { key: string; data: any }) 
 };
 
 export const getItemStorage = async ({ key }: { key: string }) => {
+  console.log('Dados recuperados com Async storage');
   const data = await AsyncStorage.getItem(key);
   return data;
-  console.log('Dados recuperados com Async storage');
+};
+
+export const removeItemStorage = async ({ key }: { key: string }) => {
+  console.log('Dados excluidos com Async storage');
+  const data = await AsyncStorage.removeItem(key);
+  return data;
 };

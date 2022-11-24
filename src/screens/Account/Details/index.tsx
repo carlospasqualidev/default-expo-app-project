@@ -4,12 +4,14 @@ import { View, StyleSheet, Image } from 'react-native';
 import { Formik } from 'formik';
 
 // COMPONENTS
-import { Text, Input, Button, IconButton } from '../../../components';
+import { Text, Input, IconButton } from '../../../components';
 import { sizes, useTheme } from '../../../styles';
 import { schemaLogin } from './functions';
+import { useAuthContext } from '../../../hooks/auth/UseAuthContext';
 
 export const AccountDetails = () => {
   const theme = useTheme();
+  const { signout } = useAuthContext();
 
   // #region STYLES
   const styles = StyleSheet.create({
@@ -34,8 +36,9 @@ export const AccountDetails = () => {
     },
 
     buttonContainer: {
-      flex: 1,
+      flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center',
     },
   });
   // #endregion
@@ -91,6 +94,7 @@ export const AccountDetails = () => {
               error={errors.email}
             />
             <Input
+              secureTextEntry
               label="Senha"
               iconName="alphabetical"
               onChangeText={handleChange('password')}
@@ -98,12 +102,18 @@ export const AccountDetails = () => {
               error={errors.password}
             />
             <View style={styles.buttonContainer}>
-              <Button label="Salvar" onPress={handleSubmit} />
-              <IconButton label="Sair" onPress={() => console.log('sair')} icon="exit" />
               <IconButton
+                containerColor={theme.colors.error}
                 label="Sair"
-                onPress={() => console.log('sair')}
-                icon="pencil"
+                onPress={async () => {
+                  signout();
+                }}
+                icon="exit-run"
+              />
+              <IconButton
+                label="Editar"
+                onPress={() => handleSubmit}
+                icon="book-edit-outline"
               />
             </View>
           </>

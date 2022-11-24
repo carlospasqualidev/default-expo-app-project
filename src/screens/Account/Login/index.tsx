@@ -7,10 +7,12 @@ import { Formik } from 'formik';
 import { Text, Input, Button } from '../../../components';
 import { sizes, useTheme } from '../../../styles';
 import { schemaLogin } from './functions';
-import { setItemStorage } from '../../../hooks/setItemStorage';
+import { setItemStorage } from '../../../hooks/itemsStorage';
+import { useAuthContext } from '../../../hooks/auth/UseAuthContext';
 
 export const Login = () => {
   const theme = useTheme();
+  const { signin } = useAuthContext();
 
   // #region STYLES
   const styles = StyleSheet.create({
@@ -52,9 +54,12 @@ export const Login = () => {
         </View>
 
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{
+            email: 'carlos.pasquali.dev@gmail.com',
+            password: '123123123',
+          }}
           validationSchema={schemaLogin}
-          onSubmit={(values) => {
+          onSubmit={async (values) => {
             if (
               values.password === '123123123' &&
               values.email === 'carlos.pasquali.dev@gmail.com'
@@ -64,7 +69,8 @@ export const Login = () => {
                 email: values.email,
                 password: values.password,
               };
-              setItemStorage({ key: '@User', data });
+              await setItemStorage({ key: '@User', data });
+              signin({ email: data.email, password: data.password });
             } else {
               console.log('Erro na autenticacao');
             }
@@ -81,6 +87,7 @@ export const Login = () => {
               />
               <Input
                 label="Senha"
+                secureTextEntry
                 iconName="alphabetical"
                 onChangeText={handleChange('password')}
                 value={values.password}
