@@ -6,4 +6,3 @@ export * from './LoadingScreen';
 export * from './IconButton';
 export * from './Modal';
 export * from './Stars';
-export * from './Card';

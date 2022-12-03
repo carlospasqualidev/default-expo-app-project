@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { sizes, useTheme } from '../styles';
 
-import { Dashboard, AccountDetails } from '../screens';
+import { Map, AccountDetails } from '../screens';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
@@ -47,21 +47,21 @@ export const Router = () => {
         }}
       >
         <Screen
-          name="Dashboard"
-          component={Dashboard}
+          name="Map"
+          component={Map}
           options={{
             headerShown: false,
 
             tabBarIcon: ({ focused }) =>
               focused ? (
                 <MaterialCommunityIcons
-                  name="information"
+                  name="map-search"
                   size={24}
                   color={theme.colors.primary}
                 />
               ) : (
                 <MaterialCommunityIcons
-                  name="information-outline"
+                  name="map-search-outline"
                   size={24}
                   color={theme.colors.primary}
                 />

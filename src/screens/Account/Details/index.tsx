@@ -38,7 +38,7 @@ export const AccountDetails = () => {
     buttonContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
     },
   });
   // #endregion
