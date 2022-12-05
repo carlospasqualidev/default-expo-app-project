@@ -15,14 +15,9 @@ import { getUserLocation, requestUserLocationPermission } from './functions';
 import { IPlaces, IUserRegion } from './types';
 import { useTheme } from '../../hooks';
 
-import { fakePlaces } from './fakeData';
 import { sizes } from '../../styles';
+import { useAuthContext } from '../../hooks/auth/UseAuthContext';
 
-// #endregion
-// #region STYLES
-
-// #endregion
-// #region STYLES
 const styles = StyleSheet.create({
   map: {
     width: Dimensions.get('window').width,
@@ -49,6 +44,8 @@ const styles = StyleSheet.create({
 
 export const Map = () => {
   const theme = useTheme();
+  const { loadingLocals } = useAuthContext();
+  const locals = loadingLocals();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userRegion, setUserRegion] = useState<IUserRegion>();
@@ -89,7 +86,7 @@ export const Map = () => {
               followsUserLocation
               minZoomLevel={12}
             >
-              {fakePlaces.map((place) => (
+              {locals.map((place: any) => (
                 <MapMarker
                   key={place.latitude}
                   coordinate={{

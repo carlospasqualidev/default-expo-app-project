@@ -6,12 +6,14 @@ export interface IUserRegion {
 }
 
 export interface IPlaces {
+  id: number;
   image: string;
   name: string;
   stars: number;
   description: string;
   latitude: number;
   longitude: number;
+  isFavorite: boolean;
 }
 
 export interface IPlaceDetailsModal {

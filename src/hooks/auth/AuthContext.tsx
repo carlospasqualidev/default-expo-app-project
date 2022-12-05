@@ -4,6 +4,8 @@ import { createContext } from 'react';
 export interface IAuthContext {
   signin: ({ email, password }: { email: string; password: string }) => void;
   signout: () => void;
+  setFavoriteLocal: any;
+  loadingLocals: any;
 }
 
 export const AuthContext = createContext<IAuthContext>(null!);

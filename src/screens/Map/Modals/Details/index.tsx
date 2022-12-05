@@ -1,11 +1,15 @@
 import { StyleSheet, View, Image, ScrollView, SafeAreaView } from 'react-native';
+import { useState } from 'react';
 import { Modal, Stars, IconButton, Text } from '../../../../components';
 import { sizes } from '../../../../styles';
 import { useTheme } from '../../../../hooks';
 import { IPlaceDetailsModal } from '../../types';
+import { useAuthContext } from '../../../../hooks/auth/UseAuthContext';
 
 export const ModalDetails = ({ hideModal, isOpen, placeData }: IPlaceDetailsModal) => {
   const theme = useTheme();
+  const { setFavoriteLocal } = useAuthContext();
+  const [place, setPlace] = useState(placeData);
 
   // #region STYLES
   const styles = StyleSheet.create({
@@ -58,14 +62,14 @@ export const ModalDetails = ({ hideModal, isOpen, placeData }: IPlaceDetailsModa
           <Image
             style={styles.image}
             source={{
-              uri: placeData.image,
+              uri: place.image,
             }}
           />
           <View style={styles.body}>
-            <Text type="h5">{placeData.name}</Text>
+            <Text type="h5">{place.name}</Text>
 
             <View style={styles.stars}>
-              <Stars filled={placeData.stars} maxCount={5} />
+              <Stars filled={place.stars} maxCount={5} />
             </View>
 
             <View style={styles.buttonsContainer}>
@@ -75,9 +79,13 @@ export const ModalDetails = ({ hideModal, isOpen, placeData }: IPlaceDetailsModa
                 onPress={() => console.log('click')}
               />
               <IconButton
-                icon="heart-outline"
+                icon={place.isFavorite ? 'heart' : 'heart-outline'}
                 label="favoritar"
-                onPress={() => console.log('click')}
+                onPress={() => {
+                  setFavoriteLocal({ place });
+
+                  setPlace({ ...place, isFavorite: !place.isFavorite });
+                }}
               />
               <IconButton
                 icon="car-outline"
@@ -86,7 +94,7 @@ export const ModalDetails = ({ hideModal, isOpen, placeData }: IPlaceDetailsModa
               />
             </View>
 
-            <Text type="p2">{placeData.description}</Text>
+            <Text type="p2">{place.description}</Text>
           </View>
         </ScrollView>
       </SafeAreaView>
