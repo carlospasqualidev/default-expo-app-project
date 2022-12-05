@@ -7,28 +7,31 @@ import { StyleSheet, View } from 'react-native';
 import { ILoadingScreen } from './types';
 import { Text } from '../Typography';
 import { sizes } from '../../styles';
+import { useThemeScheme } from '../../hooks';
 
 // #endregion
 
-// #region STYLES
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+export const LoadingScreen = ({ isLoading, children }: ILoadingScreen) => {
+  const theme = useThemeScheme();
 
-  text: {
-    marginBottom: sizes['sm-8'],
-  },
-});
-// #endregion
+  // #region STYLES
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: theme.colors.background,
+    },
 
-export const LoadingScreen = ({ isLoading, children }: ILoadingScreen) =>
-  isLoading ? (
+    text: {
+      marginBottom: sizes['sm-8'],
+    },
+  });
+  // #endregion
+  return isLoading ? (
     <View style={styles.container}>
       <Text type="h6" style={styles.text}>
-        Veglivery💚
+        Veglivery 💚
       </Text>
 
       <ActivityIndicator animating />
@@ -36,3 +39,4 @@ export const LoadingScreen = ({ isLoading, children }: ILoadingScreen) =>
   ) : (
     children
   );
+};

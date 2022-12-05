@@ -57,7 +57,7 @@ export const Modal = ({
     <PaperModal
       theme={{
         colors: {
-          backdrop: 'transparent',
+          // backdrop: 'transparent',
         },
       }}
       visible={isVisible}

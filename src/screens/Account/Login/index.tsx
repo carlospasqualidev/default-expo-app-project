@@ -50,7 +50,7 @@ export const Login = () => {
     <View style={styles.background}>
       <View>
         <View style={styles.header}>
-          <Text type="h3">Veglivery💚</Text>
+          <Text type="h3">Veglivery 💚</Text>
         </View>
 
         <Formik

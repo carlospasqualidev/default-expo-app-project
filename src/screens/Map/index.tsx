@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 // #region IMPORTS
 // LIBS
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
 
   markerView: {
     flex: 1,
-    backgroundColor: '#red',
   },
 
   containerPermission: {
@@ -119,7 +119,7 @@ export const Map = () => {
           <>
             <View style={styles.containerPermission}>
               <Text type="h6" style={styles.text}>
-                Veglivery💚
+                Veglivery 💚
               </Text>
               <Text type="p3" style={styles.text}>
                 Nós realmente precisamos da sua localização :( ...

@@ -33,7 +33,7 @@ export const IconButton = ({
         containerColor={containerColor ?? theme.colors.primary}
       />
 
-      <Text type="p6">{label}</Text>
+      {label && <Text type="p6">{label}</Text>}
     </View>
   );
 };
